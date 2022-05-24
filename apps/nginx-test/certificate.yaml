@@ -1,0 +1,12 @@
+kind: Certificate
+apiVersion: cert-manager.io/v1
+metadata:
+  name: nginx
+  namespace: nginx
+spec:
+  secretName: nginx
+  issuerRef:
+    name: acme-issuer
+    kind: ClusterIssuer
+  dnsNames:
+    - "nginx.cedricbrisson.ca"

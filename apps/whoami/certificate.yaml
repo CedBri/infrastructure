@@ -1,0 +1,12 @@
+kind: Certificate
+apiVersion: cert-manager.io/v1
+metadata:
+  name: whoami
+  namespace: whoami
+spec:
+  secretName: whoami
+  issuerRef:
+    name: acme-issuer
+    kind: ClusterIssuer
+  dnsNames:
+    - "whoami.cedricbrisson.ca"

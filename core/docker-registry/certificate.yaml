@@ -1,0 +1,12 @@
+kind: Certificate
+apiVersion: cert-manager.io/v1
+metadata:
+  name: docker-registry
+  namespace: docker-registry
+spec:
+  secretName: docker-registry
+  issuerRef:
+    name: acme-issuer
+    kind: ClusterIssuer
+  dnsNames:
+    - "registry.cedricbrisson.ca"

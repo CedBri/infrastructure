@@ -1,0 +1,30 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: whoami
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: whoami
+  template:
+    metadata:
+      labels:
+        app: whoami
+    spec:
+      containers:
+        - name: whoami
+          image: traefik/whoami
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: whoami
+  namespace: whoami
+spec:
+  ports:
+    - name: http
+      targetPort: 80
+      port: 80
+  selector:
+    app: whoami
